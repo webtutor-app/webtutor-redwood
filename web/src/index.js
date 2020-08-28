@@ -1,15 +1,20 @@
 import ReactDOM from 'react-dom'
 import { RedwoodProvider, FatalErrorBoundary } from '@redwoodjs/web'
 import FatalErrorPage from 'src/pages/FatalErrorPage'
-
-import Routes from 'src/Routes'
+import { Provider } from 'react-redux'
 
 import './index.css'
+import './i18n'
+
+import Routes from 'src/Routes'
+import store from './store'
 
 ReactDOM.render(
   <FatalErrorBoundary page={FatalErrorPage}>
     <RedwoodProvider>
-      <Routes />
+      <Provider store={store}>
+        <Routes />
+      </Provider>
     </RedwoodProvider>
   </FatalErrorBoundary>,
   document.getElementById('redwood-app')
